@@ -12,16 +12,23 @@ export class RobotsService {
         private robotRepository: RobotRepository,
       ) {}
 
-      async newComand(command: string, flag: number = 1): Promise<CreateCommandRes | InvalidCommand>{
+      async newComand(command: string): Promise<CreateCommandRes | InvalidCommand>{
         const createdAt = new Date();
         const regex = new RegExp(/^[MRL]+$/);
         let isValid = regex.test(command);
         let isValidMove = true;
         let initialPosition = await this.getLastedPosition();
         let finalPosition;
-        if(isValid) finalPosition = this.parseCommand(command, initialPosition);
+
+        if(isValid){ 
+          finalPosition = this.parseCommand(command, initialPosition)
+          if(!finalPosition){
+            isValidMove = false;
+            finalPosition = initialPosition;
+          }
+        }
         else finalPosition = initialPosition;
-        if (flag && finalPosition===initialPosition) isValidMove = false;
+        
 
         
         const robs = new Robot();
@@ -31,6 +38,7 @@ export class RobotsService {
         robs.isValid = isValid;  
 
         const result = await this.robotRepository.save(robs);
+        console.log(result);
 
         if(!isValid){
           return new InvalidCommand('syntax error');
@@ -53,6 +61,7 @@ export class RobotsService {
 
      }
      parseCommand(commands:string, initialPos: string): string {
+       console.log("oi")
        const directions = ['S','W','N','E']
        const numberDir =  directions.length;
        let posx = parseInt(initialPos[1], 10);
@@ -99,7 +108,7 @@ export class RobotsService {
           case 'M':
             posx = moveForward[dir](posx,posy)[0];
             posy = moveForward[dir](posx,posy)[1];
-            if (posx == -1 || posy == -1) return initialPos;                  
+            if (posx == -1 || posy == -1) return undefined;                  
          }
        }
        return `(${posx},${posy},${dir})`;  

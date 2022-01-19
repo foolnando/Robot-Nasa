@@ -9,7 +9,7 @@ export class RobotsController {
 
     @Post()
     async newComand(@Body() body: CreateCommandReq): Promise<CreateCommandRes> {
-      const result = await this.robotsService.newComand(body.command, body.flag);
+      const result = await this.robotsService.newComand(body.command);
       
       if(result instanceof InvalidCommand) {
       

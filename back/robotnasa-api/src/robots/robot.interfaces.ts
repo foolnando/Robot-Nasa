@@ -6,7 +6,6 @@ interface CreateCommandRes{
 
 interface CreateCommandReq{
     command: string
-    flag: number
 }
 
 interface RobotPosition{

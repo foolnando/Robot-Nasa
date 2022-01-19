@@ -2,6 +2,7 @@ interface CreateCommandRes{
     createdAt: string
     command: string
     finalPosition: string
+    initialPosition: string
   } 
 
 interface CreateCommandReq{

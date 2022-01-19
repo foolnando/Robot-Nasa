@@ -1,14 +1,29 @@
 import { Table, Tag, Space } from 'antd';
-import {   ArrowDownOutlined, ArrowLeftOutlined, ArrowRightOutlined, ArrowUpOutlined } from '@ant-design/icons';
+import { ArrowDownOutlined, ArrowLeftOutlined, ArrowRightOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import GridSquare from './gridSquare';
+import React from 'react';
+
+type Coordenate = {
+  0: string;
+  1: string;
+  2: string;
+  3: string;
+  4: string;
+
+};
 
 interface Props {
-  command: string
+  boardData: {
+    0: any
+    1: any
+    2: any
+    3: any
+    4: any
+  }[]
 }
 
-export default function GridBoardTable({command}: Props) {
-  let posy = 0;
-  let posx = 0;
+export default function GridBoardTable({boardData}: Props) {
+  
 
 const column = [
   {
@@ -38,45 +53,8 @@ const column = [
   }
 ]
 
-let board = [
-    {
-        0: <GridSquare />,
-        1: <GridSquare />,
-        2: <GridSquare />,
-        3: <GridSquare />,
-        4: <GridSquare />
+let board = boardData;
 
-    },
-    {
-        0: <GridSquare />,
-        1: <GridSquare />,
-        2: <GridSquare />,
-        3: <GridSquare />,
-        4: <GridSquare />
-    },
-    {
-        0: <GridSquare />,
-        1: <GridSquare />,
-        2: <GridSquare />,
-        3: <GridSquare />,
-        4: <GridSquare />
-    },
-    {
-        0: <GridSquare />,
-        1: <GridSquare />,
-        2: <GridSquare />,
-        3: <GridSquare />,
-        4: <GridSquare />
-  },
-  {
-      0: <GridSquare />,
-      1: <GridSquare />,
-      2: <GridSquare />,
-      3: <GridSquare />,
-      4: <GridSquare />
-}
-  ];
-  //board[0][0] = <ArrowUpOutlined />
   
 
 return(<Table  rowClassName={() => "grid-board"} bordered pagination={false} columns={column} dataSource={board} showHeader={false} />);}

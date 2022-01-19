@@ -5,7 +5,7 @@ interface Props {
     handleClick: () => void
 }
 
-function SubmittButton({handleClick}: Props) {
+function ResetButton({handleClick}: Props) {
 
     return (
         <StyledButton 
@@ -20,4 +20,4 @@ const StyledButton = styled.button`
     background-color: var(--secundaria);
     font-weight: 400;
 `
-export default SubmittButton;
+export default ResetButton;

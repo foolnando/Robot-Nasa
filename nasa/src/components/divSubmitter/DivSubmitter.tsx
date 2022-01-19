@@ -13,28 +13,6 @@ interface Props{
 }
 
 function DivSubmitter({inputContent, setInputContent, submitter}: Props) {
-    // const [content, setContent] = useState<string>("");
-    // const onClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    //     console.log(e, 'I was closed.');
-    //   };
-
-    // const submitt = async () => {
-    //     await axios.post("http://localhost:3333/robots", {
-    //         command: inputContent
-    //     }
-    //     ).then((response) => {
-    //         console.log(response);
-    //     }).catch(error => {
-    //         notification['error']({
-    //             message: 'Erro no comando',
-    //             description:
-    //               error.response.data.error,
-    //           });
-            
-    //     });
-    // } 
-
-    //console.log(content)
     return (
     <StyledDiv> 
         <Input content={inputContent} setContent={setInputContent}/>

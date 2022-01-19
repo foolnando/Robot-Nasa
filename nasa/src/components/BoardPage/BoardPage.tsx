@@ -1,39 +1,31 @@
-import { Alert, notification } from 'antd';
+import { Alert, notification } from 'antd/lib';
 import { Content } from 'antd/lib/layout/layout';
 import axios from 'axios';
 import { useState } from 'react';
 import styled from 'styled-components';
 import Input from '../../atom/Input';
 import GridBoardTable from '../gridBoard/GridBoardTable';
+import ResetButton from '../resetButton/resetButton';
 import SubmittButton from '../submitButton/submittButton';
 
 interface Props {
     returnedPosition: string
-    setPosition: (e:string) => void
+    handleReset: () => void 
+    boardData: {
+        0: any
+        1: any
+        2: any
+        3: any
+        4: any
+      }[]
 }
 
-function BoardPage({returnedPosition, setPosition}: Props) {
-    const reset = async () => {
-        await axios.post("http://localhost:3333/robots/reset-position"
-        ).then((response) => {
-            setPosition(response.data.finalPosition);
-            console.log(response);
-        }).catch(error => {
-            notification['error']({
-                message: 'Erro no comando',
-                description:
-                  error.response.data.error,
-              });
-            
-        });
-    } 
-
-    console.log("On the board page: "+returnedPosition)
+function BoardPage({returnedPosition, handleReset, boardData}: Props) {
 
     return (
     <StyledDiv> 
-        <GridBoardTable command={returnedPosition}/>
-        <SubmittButton handleClick={reset}></SubmittButton>
+        <GridBoardTable boardData={boardData}/>
+        <ResetButton handleClick={handleReset}></ResetButton>
     </StyledDiv>)
 }
 

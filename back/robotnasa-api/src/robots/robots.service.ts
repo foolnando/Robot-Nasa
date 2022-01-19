@@ -49,7 +49,8 @@ export class RobotsService {
         return {
                 createdAt: result.createdAt,
                 command: result.command,
-                finalPosition: result.finalPos
+                finalPosition: result.finalPos,
+                initialPosition: result.initialPos
               };
       }
      
@@ -90,6 +91,7 @@ export class RobotsService {
          else return [-1,-1];
          },
          E: function(posx: number,posy: number):number[] {
+           console.log(posx, posx+1)
           if (posx+1 <= 4){
             posx++;
             return [posx, posy];
@@ -106,8 +108,9 @@ export class RobotsService {
            dir = directions[this.changeDirection(numberDir, directions.indexOf(dir), +1)]
            break;
           case 'M':
-            posx = moveForward[dir](posx,posy)[0];
-            posy = moveForward[dir](posx,posy)[1];
+            if (dir=='W' || dir=='E') posx = moveForward[dir](posx,posy)[0];
+            else posy = moveForward[dir](posx,posy)[1];
+            
             if (posx == -1 || posy == -1) return undefined;                  
          }
        }
@@ -129,11 +132,13 @@ export class RobotsService {
 
         const result = await this.robotRepository.save(resetedRobot);
 
+        console.log(result)
 
         return {
           createdAt: result.createdAt,
           command: result.command,
-          finalPosition: result.finalPos
+          finalPosition: result.finalPos,
+          initialPosition: result.initialPos
         };
      }
 

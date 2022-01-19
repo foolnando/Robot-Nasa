@@ -1,3 +1,6 @@
+import { Button } from 'antd/';
+import "antd/dist/antd.css";
+
 import styled from 'styled-components';
 
 
@@ -7,9 +10,10 @@ interface Props {
 
 function SubmittButton({handleClick}: Props) {
 
-    return (
-        <StyledButton 
-        onClick={handleClick}>Submeter</StyledButton>
+    return ( <StyledButton onClick={handleClick} >
+        Submeter
+    </StyledButton>
+        
     )
 }
 

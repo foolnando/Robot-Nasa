@@ -7,14 +7,16 @@ import Input from '../../atom/Input';
 import GridBoardTable from '../gridBoard/GridBoardTable';
 import SubmittButton from '../submitButton/submittButton';
 
-function BoardPage() {
-    const [content, setContent] = useState<string>("");
+interface Props {
+    returnedPosition: string
+    setPosition: (e:string) => void
+}
 
+function BoardPage({returnedPosition, setPosition}: Props) {
     const reset = async () => {
-        await axios.post("http://localhost:3333/robots/reset-position", {
-            command: content
-        }
+        await axios.post("http://localhost:3333/robots/reset-position"
         ).then((response) => {
+            setPosition(response.data.finalPosition);
             console.log(response);
         }).catch(error => {
             notification['error']({
@@ -26,10 +28,11 @@ function BoardPage() {
         });
     } 
 
-    //console.log(content)
+    console.log("On the board page: "+returnedPosition)
+
     return (
     <StyledDiv> 
-        <GridBoardTable></GridBoardTable>
+        <GridBoardTable command={returnedPosition}/>
         <SubmittButton handleClick={reset}></SubmittButton>
     </StyledDiv>)
 }

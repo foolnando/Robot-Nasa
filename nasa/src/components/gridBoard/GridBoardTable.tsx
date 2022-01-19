@@ -2,7 +2,14 @@ import { Table, Tag, Space } from 'antd';
 import {   ArrowDownOutlined, ArrowLeftOutlined, ArrowRightOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import GridSquare from './gridSquare';
 
-export default function GridBoardTable() {
+interface Props {
+  command: string
+}
+
+export default function GridBoardTable({command}: Props) {
+  let posy = 0;
+  let posx = 0;
+
 const column = [
   {
     title: '0',
@@ -31,7 +38,7 @@ const column = [
   }
 ]
 
-const board = [
+let board = [
     {
         0: <GridSquare />,
         1: <GridSquare />,
@@ -62,12 +69,14 @@ const board = [
         4: <GridSquare />
   },
   {
-      0: <ArrowUpOutlined />,
-      1: <ArrowDownOutlined />,
-      2: <ArrowLeftOutlined />,
-      3: <ArrowRightOutlined />,
-      4: <GridSquare></GridSquare>
+      0: <GridSquare />,
+      1: <GridSquare />,
+      2: <GridSquare />,
+      3: <GridSquare />,
+      4: <GridSquare />
 }
   ];
+  //board[0][0] = <ArrowUpOutlined />
+  
 
 return(<Table  rowClassName={() => "grid-board"} bordered pagination={false} columns={column} dataSource={board} showHeader={false} />);}

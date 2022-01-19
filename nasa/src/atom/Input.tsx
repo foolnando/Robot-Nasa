@@ -8,7 +8,6 @@ interface Props{
 }
 
 const Input = ( {content, setContent}: Props) => {    
-    //console.log(content);
     return (
         <StyledInput 
             value={content}

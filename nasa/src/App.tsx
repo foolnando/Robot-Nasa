@@ -7,17 +7,18 @@ import GridBoardTable from './components/gridBoard/GridBoardTable';
 import StyledButton from './components/submitButton/submittButton';
 import DivSubmitter from './components/divSubmitter/DivSubmitter';
 import BoardPage from './components/BoardPage/BoardPage';
+import MainPage from './components/mainPage/MainPage';
 
 
 
 function App() {
   return (
     <div className="App">
-    
-      <StyledElements>
+      <MainPage/>
+      {/* <StyledElements>
         <DivSubmitter/>
         <BoardPage />
-      </StyledElements>
+      </StyledElements> */}
       
     </div>
     

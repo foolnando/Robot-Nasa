@@ -1,3 +1,5 @@
+import { Button } from 'antd';
+import "antd/dist/antd.css";
 import styled from 'styled-components';
 
 
@@ -8,16 +10,15 @@ interface Props {
 function ResetButton({handleClick}: Props) {
 
     return (
-        <StyledButton 
-        onClick={handleClick}>Resetar</StyledButton>
+        <ButtonCustomized 
+        onClick={handleClick}>Resetar</ButtonCustomized>
     )
 }
-
-const StyledButton = styled.button`
-    margin-top: 8px;
+const ButtonCustomized = styled(Button)`
+    margin-top: 10px;
     align-self: flex-end;
     width: 30%;
-    background-color: var(--secundaria);
-    font-weight: 400;
 `
+
+
 export default ResetButton;

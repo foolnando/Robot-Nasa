@@ -1,6 +1,5 @@
 import { notification } from "antd";
 import axios from "axios";
-import "antd/dist/antd.css";
 import { useEffect, useState } from "react";
 import BoardPage from "../BoardPage/BoardPage";
 import DivSubmitter from "../divSubmitter/DivSubmitter";
@@ -50,8 +49,6 @@ function MainPage() {
     ];
 
     const [content, setContent] = useState<string>("");
-    const [currentPosition, setCurrentPosition] = useState<string>("(0,0,N)");
-    const [initialPosition, setInitialPosition] = useState<string>("(0,0,N)");
     const [initialBoard, setBoard]  = useState(board);
     let bufferPosition = '(0,0,N)';
     let bufferInitialPosition = '(0,0,N)';
@@ -69,9 +66,6 @@ function MainPage() {
             bufferPosition = response.data.finalPosition;
             bufferInitialPosition = response.data.initialPosition;
             
-            setCurrentPosition(response.data.finalPosition);
-            setInitialPosition(response.data.initialPosition);
-            
             setBoard(editBoard(bufferPosition, bufferInitialPosition))
         }).catch(error => {
             notification['error']({
@@ -86,8 +80,6 @@ function MainPage() {
     const reset = async () => {
         await axios.post("http://localhost:3333/robots/reset-position"
         ).then((response) => {
-            setCurrentPosition(response.data.finalPosition);
-            setInitialPosition(response.data.initialPosition);
             setBoard(editBoard(response.data.finalPosition, response.data.finalPosition))
         }).catch(error => {
             notification['error']({

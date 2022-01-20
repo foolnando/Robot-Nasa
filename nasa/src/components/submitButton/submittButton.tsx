@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import styled from 'styled-components';
 
 
@@ -7,18 +8,17 @@ interface Props {
 
 function SubmittButton({handleClick}: Props) {
 
-    return ( <StyledButton onClick={handleClick} >
+    return ( <ButtonCustomized onClick={handleClick} >
         Submeter
-    </StyledButton>
+    </ButtonCustomized>
         
     )
 }
 
-const StyledButton = styled.button`
-    margin-top: 8px;
+const ButtonCustomized = styled(Button)`
+    margin-top: 10px;
     align-self: flex-end;
     width: 30%;
-    background-color: var(--secundaria);
-    font-weight: 400;
 `
+
 export default SubmittButton;

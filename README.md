@@ -29,7 +29,7 @@ $ npm start
 
 ## ALgumas considerações
 
-###API
+### API
 
 O programa interpreta os comandos de direita (R), esquerda (L) e mover-se para frente (M). Por isso, tem um endpoint que realiza todas as funções que engolbam
 esses requisitos de movimentação, assim como foi pedido na especificação, ou seja, o endpoint ```url /robots``` é responsável por: 
@@ -41,7 +41,7 @@ esses requisitos de movimentação, assim como foi pedido na especificação, ou
 
 Além disso, há uma decisão de implementação que foi adicionar mais um endpoint à aplicação para "resetar" do robô para o inicio do Grid.
 
-###Banco de dados 
+### Banco de dados 
 
 O banco é constituido apenas de uma relação chamada 'Robot' com os campos: Id, inteiro auto-gerado não nulo; o command, que é o comando recebido em formato de
 string; createdAt, a data de submissão do comando; initialPos, a posição do robô antes de processar o comando; finalPos, a posição do robô após processar o
@@ -57,4 +57,10 @@ tipo.
 
 
 Acerca da escolha de tecnologias, foram todas priorizando as citadas na documentação e que melhor se adequavam as necessidades para implementar os requisitos.
+
+### Frontend
+
+Para os componentes do frontend, inicialmente foi pensado em adotar o padrão de atom design, porém por se tratar de uma tela muito simples e com poucos componetes
+foi decido dividir cada elemento da tela como um componente. Onde cada componentes se junta pra formar uma parte da página que se juntam pra formar a página 
+propriamente dita. Uma leve adaptação do padrão.
 

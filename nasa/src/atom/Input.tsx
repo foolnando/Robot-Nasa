@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import "nes.css/css/nes.min.css";
 import styled from 'styled-components';
-import DivSubmitter from '../components/divSubmitter/DivSubmitter';
+
 
 interface Props{ 
     content: string

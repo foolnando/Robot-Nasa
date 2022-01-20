@@ -1,15 +1,8 @@
-import { Alert, notification } from 'antd/lib';
-import { Content } from 'antd/lib/layout/layout';
-import axios from 'axios';
-import { useState } from 'react';
 import styled from 'styled-components';
-import Input from '../../atom/Input';
 import GridBoardTable from '../gridBoard/GridBoardTable';
 import ResetButton from '../resetButton/resetButton';
-import SubmittButton from '../submitButton/submittButton';
 
 interface Props {
-    returnedPosition: string
     handleReset: () => void 
     boardData: {
         0: any
@@ -20,7 +13,7 @@ interface Props {
       }[]
 }
 
-function BoardPage({returnedPosition, handleReset, boardData}: Props) {
+function BoardPage({ handleReset, boardData}: Props) {
 
     return (
     <StyledDiv> 

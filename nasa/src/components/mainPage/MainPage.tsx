@@ -1,6 +1,6 @@
 import { notification } from "antd";
 import axios from "axios";
-import styled from 'styled-components';
+import "antd/dist/antd.css";
 import { useEffect, useState } from "react";
 import BoardPage from "../BoardPage/BoardPage";
 import DivSubmitter from "../divSubmitter/DivSubmitter";
@@ -183,7 +183,7 @@ function MainPage() {
     return (      
         <StyledElements>
           <DivSubmitter inputContent={content} setInputContent={setContent} submitter={submitt} />
-          <BoardPage returnedPosition={currentPosition} handleReset={reset} boardData={initialBoard}/>
+          <BoardPage handleReset={reset} boardData={initialBoard}/>
         </StyledElements>      
     );
   }

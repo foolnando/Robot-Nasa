@@ -1,6 +1,4 @@
-import { Table, Tag, Space } from 'antd';
-import { ArrowDownOutlined, ArrowLeftOutlined, ArrowRightOutlined, ArrowUpOutlined } from '@ant-design/icons';
-import GridSquare from './gridSquare';
+import { Table } from 'antd';
 import React from 'react';
 
 type Coordenate = {

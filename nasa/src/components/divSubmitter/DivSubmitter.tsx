@@ -1,6 +1,3 @@
-import { Alert, notification } from 'antd';
-import { Content } from 'antd/lib/layout/layout';
-import axios from 'axios';
 import { useState } from 'react';
 import styled from 'styled-components';
 import Input from '../../atom/Input';

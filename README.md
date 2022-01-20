@@ -56,3 +56,5 @@ apenas seus comandos seriam em apenas uma relação que diz respeito à entidade
 tipo.
 
 
+Acerca da escolha de tecnologias, foram todas priorizando as citadas na documentação e que melhor se adequavam as necessidades para implementar os requisitos.
+

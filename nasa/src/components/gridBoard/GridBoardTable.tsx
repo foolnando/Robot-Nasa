@@ -1,14 +1,6 @@
 import { Table } from 'antd';
 import React from 'react';
 
-type Coordenate = {
-  0: string;
-  1: string;
-  2: string;
-  3: string;
-  4: string;
-
-};
 
 interface Props {
   boardData: {

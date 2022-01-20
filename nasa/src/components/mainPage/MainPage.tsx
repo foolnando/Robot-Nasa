@@ -68,10 +68,10 @@ function MainPage() {
         ).then((response) => {
             bufferPosition = response.data.finalPosition;
             bufferInitialPosition = response.data.initialPosition;
-            console.log(response.data.finalPosition);
+            
             setCurrentPosition(response.data.finalPosition);
             setInitialPosition(response.data.initialPosition);
-            console.log("current pos: "+currentPosition);
+            
             setBoard(editBoard(bufferPosition, bufferInitialPosition))
         }).catch(error => {
             notification['error']({
@@ -88,7 +88,6 @@ function MainPage() {
         ).then((response) => {
             setCurrentPosition(response.data.finalPosition);
             setInitialPosition(response.data.initialPosition);
-            console.log("reset pos: "+currentPosition);
             setBoard(editBoard(response.data.finalPosition, response.data.finalPosition))
         }).catch(error => {
             notification['error']({
@@ -167,15 +166,12 @@ function MainPage() {
 
         const initialPosy = positionInitial[1] as unknown as keyof typeof columm;
         const initialPosx = 4 - Number(positionInitial[3])
-        //const initialDirection = position[5] as keyof typeof coordenate;
-
+       
         
         
         board[initialPosx][initialPosy] = <GridSquare />;
-        console.log("colocando a seta aqui: "+posx+posy)
         board[posx][posy] = coordenate[direction];
-        console.log(board)
-        console.log("position on edit board: "+position)
+        
 
         return board;
     }

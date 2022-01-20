@@ -38,7 +38,7 @@ export class RobotsService {
         robs.isValid = isValid;  
 
         const result = await this.robotRepository.save(robs);
-        console.log(result);
+        
 
         if(!isValid){
           return new InvalidCommand('syntax error');
@@ -62,7 +62,7 @@ export class RobotsService {
 
      }
      parseCommand(commands:string, initialPos: string): string {
-       console.log("oi")
+       
        const directions = ['S','W','N','E']
        const numberDir =  directions.length;
        let posx = parseInt(initialPos[1], 10);

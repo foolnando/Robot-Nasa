@@ -2,151 +2,152 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RobotRepository } from './robot.repository';
 import { Robot } from './robot.entity';
-import { CreateCommandReq, CreateCommandRes} from './robot.interfaces';
+import { CreateCommandReq, CreateCommandRes } from './robot.interfaces';
 import InvalidCommand from './robot.error';
 
 @Injectable()
 export class RobotsService {
-    constructor(
-        @InjectRepository(RobotRepository)
-        private robotRepository: RobotRepository,
-      ) {}
+  constructor(
+    @InjectRepository(RobotRepository)
+    private robotRepository: RobotRepository,
+  ) {}
 
-      async newComand(command: string): Promise<CreateCommandRes | InvalidCommand>{
-        const createdAt = new Date();
-        const regex = new RegExp(/^[MRL]+$/);
-        let isValid = regex.test(command);
-        let isValidMove = true;
-        let initialPosition = await this.getLastedPosition();
-        let finalPosition;
+  async newComand(command: string): Promise<CreateCommandRes | InvalidCommand> {
+    console.log(command);
+    const createdAt = new Date();
+    const regex = new RegExp(/^[MRL]+$/);
+    let isValid = regex.test(command);
+    if (!command) {
+      isValid = false;
+    }
+    let isValidMove = true;
+    let initialPosition = await this.getLastedPosition();
+    let finalPosition;
 
-        if(isValid){ 
-          finalPosition = this.parseCommand(command, initialPosition)
-          if(!finalPosition){
-            isValidMove = false;
-            finalPosition = initialPosition;
-          }
-        }
-        else finalPosition = initialPosition;
-        
-
-        
-        const robs = new Robot();
-        robs.command = command;
-        robs.finalPos = finalPosition;
-        robs.initialPos = initialPosition;
-        robs.isValid = isValid;  
-
-        const result = await this.robotRepository.save(robs);
-        
-
-        if(!isValid){
-          return new InvalidCommand('syntax error');
-        }
-
-        if (!isValidMove) return new InvalidCommand('semantic error');
-        
-        return {
-                createdAt: result.createdAt,
-                command: result.command,
-                finalPosition: result.finalPos,
-                initialPosition: result.initialPos
-              };
+    if (isValid) {
+      finalPosition = this.parseCommand(command, initialPosition);
+      if (!finalPosition) {
+        isValidMove = false;
+        finalPosition = initialPosition;
       }
-     
-     changeDirection(lenList: number, init: number, move: number): number{
-      let final = init+move;
-      if (final >= lenList) return 0;
-      if (final < 0) return lenList - 1;
-      return final;
+    } else finalPosition = initialPosition;
 
-     }
-     parseCommand(commands:string, initialPos: string): string {
-       
-       const directions = ['S','W','N','E']
-       const numberDir =  directions.length;
-       let posx = parseInt(initialPos[1], 10);
-       let posy = parseInt(initialPos[3], 10);
-       let dir = initialPos[5];
+    const robs = new Robot();
+    robs.command = command;
+    robs.finalPos = finalPosition;
+    robs.initialPos = initialPosition;
+    robs.isValid = isValid;
 
-       const moveForward = {
-         N: function(posx:number,posy: number):number[] {
-          if (posy+1 <= 4){
-            posy++;
-            return [posx, posy];
-           } else return [-1,-1];
-          },
-         S: function(posx:number,posy: number):number[]{
-          if(posy-1 >= 0){
-             posy--;
-            return [posx, posy];
-          }
-          else return [-1,-1];
-         },
-         W: function(posx:number,posy: number):number[] {
-          if(posx-1 >= 0){
-            posx--;
-           return [posx, posy];
-         }
-         else return [-1,-1];
-         },
-         E: function(posx: number,posy: number):number[] {
-           console.log(posx, posx+1)
-          if (posx+1 <= 4){
-            posx++;
-            return [posx, posy];
-           } else return [-1,-1];
-         },
-       }
+    const result = await this.robotRepository.save(robs);
 
-       for (let command of commands.split("")) {
-        switch (command){
-          case 'L':
-            dir = directions[this.changeDirection(numberDir, directions.indexOf(dir), -1)]
-            break;
-          case 'R':
-           dir = directions[this.changeDirection(numberDir, directions.indexOf(dir), +1)]
-           break;
-          case 'M':
-            if (dir=='W' || dir=='E') posx = moveForward[dir](posx,posy)[0];
-            else posy = moveForward[dir](posx,posy)[1];
-            
-            if (posx == -1 || posy == -1) return undefined;                  
-         }
-       }
-       return `(${posx},${posy},${dir})`;  
-     } 
+    if (!isValid) {
+      return new InvalidCommand('syntax error');
+    }
 
-     async resetPosition(): Promise<CreateCommandRes>{
-      const command = '(0,0,N)';
-      let isValid = true;
-      let isValidMove = true;
-      let initialPosition = await this.getLastedPosition();
-      let finalPosition = '(0,0,N)';
+    if (!isValidMove) return new InvalidCommand('semantic error');
 
-      const resetedRobot = new Robot();
-        resetedRobot.command = command;
-        resetedRobot.finalPos = finalPosition;
-        resetedRobot.initialPos = initialPosition;
-        resetedRobot.isValid = isValid;
+    return {
+      createdAt: result.createdAt,
+      command: result.command,
+      finalPosition: result.finalPos,
+      initialPosition: result.initialPos,
+    };
+  }
 
-        const result = await this.robotRepository.save(resetedRobot);
+  changeDirection(lenList: number, init: number, move: number): number {
+    let final = init + move;
+    if (final >= lenList) return 0;
+    if (final < 0) return lenList - 1;
+    return final;
+  }
+  parseCommand(commands: string, initialPos: string): string {
+    const directions = ['S', 'W', 'N', 'E'];
+    const numberDir = directions.length;
+    let posx = parseInt(initialPos[1], 10);
+    let posy = parseInt(initialPos[3], 10);
+    let dir = initialPos[5];
 
-        console.log(result)
+    const moveForward = {
+      N: function (posx: number, posy: number): number[] {
+        if (posy + 1 <= 4) {
+          posy++;
+          return [posx, posy];
+        } else return [-1, -1];
+      },
+      S: function (posx: number, posy: number): number[] {
+        if (posy - 1 >= 0) {
+          posy--;
+          return [posx, posy];
+        } else return [-1, -1];
+      },
+      W: function (posx: number, posy: number): number[] {
+        if (posx - 1 >= 0) {
+          posx--;
+          return [posx, posy];
+        } else return [-1, -1];
+      },
+      E: function (posx: number, posy: number): number[] {
+        console.log(posx, posx + 1);
+        if (posx + 1 <= 4) {
+          posx++;
+          return [posx, posy];
+        } else return [-1, -1];
+      },
+    };
 
-        return {
-          createdAt: result.createdAt,
-          command: result.command,
-          finalPosition: result.finalPos,
-          initialPosition: result.initialPos
-        };
-     }
+    for (let command of commands.split('')) {
+      switch (command) {
+        case 'L':
+          dir =
+            directions[
+              this.changeDirection(numberDir, directions.indexOf(dir), -1)
+            ];
+          break;
+        case 'R':
+          dir =
+            directions[
+              this.changeDirection(numberDir, directions.indexOf(dir), +1)
+            ];
+          break;
+        case 'M':
+          if (dir == 'W' || dir == 'E') posx = moveForward[dir](posx, posy)[0];
+          else posy = moveForward[dir](posx, posy)[1];
 
-     async getLastedPosition(): Promise<string>{
-        const pos = await this.robotRepository.findOne({ 
-            order: { createdAt: 'DESC' } 
-    })
-        return pos.finalPos;
-         
-     }
+          if (posx == -1 || posy == -1) return undefined;
+      }
+    }
+    return `(${posx},${posy},${dir})`;
+  }
+
+  async resetPosition(): Promise<CreateCommandRes> {
+    const command = '(0,0,N)';
+    let isValid = true;
+    let isValidMove = true;
+    let initialPosition = await this.getLastedPosition();
+    let finalPosition = '(0,0,N)';
+
+    const resetedRobot = new Robot();
+    resetedRobot.command = command;
+    resetedRobot.finalPos = finalPosition;
+    resetedRobot.initialPos = initialPosition;
+    resetedRobot.isValid = isValid;
+
+    const result = await this.robotRepository.save(resetedRobot);
+
+    console.log(result);
+
+    return {
+      createdAt: result.createdAt,
+      command: result.command,
+      finalPosition: result.finalPos,
+      initialPosition: result.initialPos,
+    };
+  }
+
+  async getLastedPosition(): Promise<string> {
+    const pos = await this.robotRepository.findOne({
+      order: { createdAt: 'DESC' },
+    });
+    return pos.finalPos;
+  }
 }

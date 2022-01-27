@@ -7,6 +7,14 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   username: 'pguser',
   password: 'pgpassword',
   database: 'robotNasa',
-  entities: [__dirname + '/../**/*.entity.{js,ts}'],
   synchronize: true,
+  migrationsRun: true,
+  entities: [__dirname + '/../**/*.entity.{js,ts}'],
+  migrations: [__dirname + '/../migration/*.ts'],
+  cli: {
+    entitiesDir: '../robots',
+    migrationsDir: __dirname + '/../migration',
+  },
 };
+
+export default typeOrmConfig;

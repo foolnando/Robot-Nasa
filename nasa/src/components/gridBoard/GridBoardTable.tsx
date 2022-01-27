@@ -1,50 +1,55 @@
-import { Table } from 'antd';
-import React from 'react';
-
+import { Table } from "antd";
+import React from "react";
 
 interface Props {
   boardData: {
-    0: any
-    1: any
-    2: any
-    3: any
-    4: any
-  }[]
+    0: any;
+    1: any;
+    2: any;
+    3: any;
+    4: any;
+  }[];
 }
 
-export default function GridBoardTable({boardData}: Props) {
-  
+export default function GridBoardTable({ boardData }: Props) {
+  const column = [
+    {
+      title: "0",
+      dataIndex: "0",
+      key: "0",
+    },
+    {
+      title: "1",
+      dataIndex: "1",
+      key: "1",
+    },
+    {
+      title: "2",
+      dataIndex: "2",
+      key: "2",
+    },
+    {
+      title: "3",
+      dataIndex: "3",
+      key: "3",
+    },
+    {
+      title: "4",
+      dataIndex: "4",
+      key: "4",
+    },
+  ];
 
-const column = [
-  {
-    title: '0',
-    dataIndex: '0',
-    key: '0',
-  },
-  {
-    title: '1',
-    dataIndex: '1',
-    key: '1',
-  },
-  {
-    title: '2',
-    dataIndex: '2',
-    key: '2',
-  },
-  {
-    title: '3',
-    dataIndex: '3',
-    key: '3',
-  },
-  {
-    title: '4',
-    dataIndex: '4',
-    key: '4',
-  }
-]
+  let board = boardData;
 
-let board = boardData;
-
-  
-
-return(<Table  rowClassName={() => "grid-board"} bordered pagination={false} columns={column} dataSource={board} showHeader={false} />);}
+  return (
+    <Table
+      rowClassName={() => "grid-board"}
+      bordered
+      pagination={false}
+      columns={column}
+      dataSource={board}
+      showHeader={false}
+    />
+  );
+}

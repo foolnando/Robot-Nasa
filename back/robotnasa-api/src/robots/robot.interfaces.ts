@@ -1,18 +1,18 @@
-interface CreateCommandRes{
-    createdAt: string
-    command: string
-    finalPosition: string
-    initialPosition: string
-  } 
-
-interface CreateCommandReq{
-    command: string
+interface CreateCommandRes {
+  createdAt: string;
+  command: string;
+  finalPosition: string;
+  initialPosition: string;
 }
 
-interface RobotPosition{
-    x: number
-    y: number
-    dir: string 
+interface CreateCommandReq {
+  command: string;
 }
 
-export  {CreateCommandRes, CreateCommandReq, RobotPosition}
+interface RobotPosition {
+  x: number;
+  y: number;
+  dir: string;
+}
+
+export { CreateCommandRes, CreateCommandReq, RobotPosition };

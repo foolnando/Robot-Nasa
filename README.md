@@ -7,23 +7,44 @@ Escreva um programa que permita aos engenheiros da NASA enviar comandos para o R
 
 ## Configuração do ambiente
 
-Para rodar o backend da aplicação (Os passos a seguir devem ser executados no diretório ```/back/```):
+### Clonando o repositório.
 
-Para carregar o banco de dados:
+O primeiro passo é clonar o repositório do projeto
 
 ```bash
+$ git clone https://github.com/foolnando/Robot-Nasa.git
+```
+
+### Carregando o backend do projeto
+
+Na raíz do repositório:
+
+```bash
+# Entrar no repositorio correspondente
+$ cd back/robotnasa-api/
+
+# Instalar as dependências
+$ npm install
+
+# Antes de rodar a API, carregar o banco de dados
 $ docker-compose up -d
+
+# Rodar a aplicação:
+$ npm start
 ```
 
-Para carregar a API:
+### Carregando o frontend:
 
+Na raiz do repositório:
 ```bash
-$ npm run start:dev
-```
-Para rodar o backend da aplicação (Os passos a seguir devem ser executados no diretório ```/nasa/```):
+# Entrar no repositorio correspondente
+$ cd nasa
 
-Para carregar o programa:
-```bash
+# Instalar as dependências
+$ npm install
+
+
+# Rodar a aplicação:
 $ npm start
 ```
 

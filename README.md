@@ -7,27 +7,48 @@ Escreva um programa que permita aos engenheiros da NASA enviar comandos para o R
 
 ## Configuração do ambiente
 
-Para rodar o backend da aplicação (Os passos a seguir devem ser executados no diretório ```/back/```):
+### Clonando o repositório:
 
-Para carregar o banco de dados:
+O primeiro passo é clonar o repositório do projeto
 
 ```bash
+$ git clone https://github.com/foolnando/Robot-Nasa.git
+```
+
+### Carregando o backend do projeto:
+
+Na raíz do repositório:
+
+```bash
+# Entrar no repositorio correspondente
+$ cd back/robotnasa-api/
+
+# Instalar as dependências
+$ npm install
+
+# Antes de rodar a API, carregar o banco de dados
 $ docker-compose up -d
-```
 
-Para carregar a API:
-
-```bash
-$ npm run start:dev
-```
-Para rodar o backend da aplicação (Os passos a seguir devem ser executados no diretório ```/nasa/```):
-
-Para carregar o programa:
-```bash
+# Rodar a aplicação:
 $ npm start
 ```
 
-## ALgumas considerações
+### Carregando o frontend:
+
+Na raiz do repositório:
+```bash
+# Entrar no repositorio correspondente
+$ cd nasa
+
+# Instalar as dependências
+$ npm install
+
+
+# Rodar a aplicação:
+$ npm start
+```
+
+## Algumas considerações
 
 ### API
 
@@ -41,7 +62,7 @@ esses requisitos de movimentação, assim como foi pedido na especificação, ou
 
 Além disso, há uma decisão de implementação que foi adicionar mais um endpoint à aplicação para "resetar" do robô para o inicio do Grid.
 
-### Banco de dados 
+### Esquema de Banco de dados 
 
 O banco é constituido apenas de uma relação chamada 'Robot' com os campos: Id, inteiro auto-gerado não nulo; o command, que é o comando recebido em formato de
 string; createdAt, a data de submissão do comando; initialPos, a posição do robô antes de processar o comando; finalPos, a posição do robô após processar o

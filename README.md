@@ -62,7 +62,7 @@ esses requisitos de movimentação, assim como foi pedido na especificação, ou
 
 Além disso, há uma decisão de implementação que foi adicionar mais um endpoint à aplicação para "resetar" do robô para o inicio do Grid.
 
-### Banco de dados 
+### Esquema de Banco de dados 
 
 O banco é constituido apenas de uma relação chamada 'Robot' com os campos: Id, inteiro auto-gerado não nulo; o command, que é o comando recebido em formato de
 string; createdAt, a data de submissão do comando; initialPos, a posição do robô antes de processar o comando; finalPos, a posição do robô após processar o

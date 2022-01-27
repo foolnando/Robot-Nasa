@@ -29,6 +29,9 @@ $ npm install
 # Antes de rodar a API, carregar o banco de dados
 $ docker-compose up -d
 
+# Execute as migrations:
+$ npm run db:migrations
+
 # Rodar a aplicação:
 $ npm start
 ```

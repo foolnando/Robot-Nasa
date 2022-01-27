@@ -27,7 +27,7 @@ Para carregar o programa:
 $ npm start
 ```
 
-## ALgumas considerações
+## Algumas considerações
 
 ### API
 

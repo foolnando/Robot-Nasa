@@ -7,7 +7,7 @@ Escreva um programa que permita aos engenheiros da NASA enviar comandos para o R
 
 ## Configuração do ambiente
 
-### Clonando o repositório.
+### Clonando o repositório:
 
 O primeiro passo é clonar o repositório do projeto
 
@@ -15,7 +15,7 @@ O primeiro passo é clonar o repositório do projeto
 $ git clone https://github.com/foolnando/Robot-Nasa.git
 ```
 
-### Carregando o backend do projeto
+### Carregando o backend do projeto:
 
 Na raíz do repositório:
 

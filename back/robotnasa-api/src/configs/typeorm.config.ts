@@ -6,7 +6,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   port: 5432,
   username: 'pguser',
   password: 'pgpassword',
-  database: 'robotNasa',
+  database: 'robot_nasa',
   synchronize: true,
   migrationsRun: true,
   entities: [__dirname + '/../**/*.entity.{js,ts}'],

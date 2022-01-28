@@ -15,6 +15,7 @@ const Input = ({ content, setContent }: Props) => {
 
 const StyledInput = styled.input`
   margin-top: 8px;
+  width: 500px;
   padding: 4px;
   border: black;
   background-color: whitesmoke;

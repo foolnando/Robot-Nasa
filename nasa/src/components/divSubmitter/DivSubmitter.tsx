@@ -26,7 +26,7 @@ const StyledDiv = styled.div`
   flex-direction: column;
   padding: 12px 40px;
   margin-top: 20px;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 50px;
+  margin-right: 50px;
 `;
 export default DivSubmitter;

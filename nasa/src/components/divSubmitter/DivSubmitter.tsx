@@ -19,10 +19,13 @@ function DivSubmitter({ inputContent, setInputContent, submitter }: Props) {
 }
 
 const StyledDiv = styled.div`
-  flex-grow: 2;
+  flex-grow: 4;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 12px 40px;
+  margin-top: 20px;
+  margin-left: 200px;
+  margin-right: 200px;
 `;
 export default DivSubmitter;

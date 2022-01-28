@@ -8,11 +8,15 @@ interface Props {
 }
 
 function SubmittButton({ handleClick }: Props) {
-  return <ButtonCustomized onClick={handleClick}>Submeter</ButtonCustomized>;
+  return (
+    <ButtonCustomized type="primary" onClick={handleClick}>
+      Submeter
+    </ButtonCustomized>
+  );
 }
 
 const ButtonCustomized = styled(Button)`
-  margin-top: 10px;
+  margin-top: 20px;
   align-self: flex-end;
   width: 30%;
 `;

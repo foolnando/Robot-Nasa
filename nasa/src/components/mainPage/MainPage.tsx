@@ -5,12 +5,14 @@ import BoardPage from "../BoardPage/BoardPage";
 import DivSubmitter from "../divSubmitter/DivSubmitter";
 import StyledElements from "../elementsPosition/elementsPosition";
 import GridSquare from "../gridBoard/gridSquare";
-import {
-  ArrowDownOutlined,
-  ArrowLeftOutlined,
-  ArrowRightOutlined,
-  ArrowUpOutlined,
-} from "@ant-design/icons";
+import arrowUp from "../../assets/ArrowUp.png";
+import arrowLeft from "../../assets/ArrowLeft.png";
+import arrowRight from "../../assets/ArrowRight.png";
+import arrowDown from "../../assets/ArrowDown.png";
+import nasaLogo from "../../assets/nasalogo.gif";
+// @ts-ignore
+import { Container } from "react-nes-component";
+import styled from "styled-components";
 
 function MainPage() {
   let board = [
@@ -43,7 +45,7 @@ function MainPage() {
       4: <GridSquare />,
     },
     {
-      0: <ArrowUpOutlined />,
+      0: <img src={arrowUp} alt="ArrowUp" />,
       1: <GridSquare />,
       2: <GridSquare />,
       3: <GridSquare />,
@@ -135,10 +137,10 @@ function MainPage() {
     ];
 
     const coordenate = {
-      S: <ArrowDownOutlined />,
-      N: <ArrowUpOutlined />,
-      E: <ArrowRightOutlined />,
-      W: <ArrowLeftOutlined />,
+      S: <img src={arrowDown} alt="ArrowDown" />,
+      N: <img src={arrowUp} alt="ArrowUp" />,
+      E: <img src={arrowRight} alt="ArrowRight" />,
+      W: <img src={arrowLeft} alt="ArrowLeft" />,
     };
 
     const columm = {
@@ -163,15 +165,52 @@ function MainPage() {
   }
 
   return (
-    <StyledElements>
-      <DivSubmitter
-        inputContent={content}
-        setInputContent={setContent}
-        submitter={submitt}
-      />
-      <BoardPage handleReset={reset} boardData={initialBoard} />
-    </StyledElements>
+    <div>
+      <StyledContainer title="Robot Nasa">
+        <img src={nasaLogo} alt="nasaLogo" />
+        <p>
+          <p>
+            Plataforma de simulação de movimentação do robô em solo marciano. Comandos
+            permitidos:
+          </p>
+
+          <ul>
+            <li> L: Para movimentar o robô em sentido anti-horário.</li>
+            <li> R: Para movimentar o robô em sentido horário.</li>
+            <li> M: Para movimentar o robô para frente.</li>
+          </ul>
+          <p>
+            O comando pode ser submetido no espaço de entrada abaixo e enviado com o botão "Submeter".
+          </p>
+          <p>
+            Para colocar o robô em sua posição inicial basta clicar no botão "Resetar".
+          </p>
+          <p>
+            A seta representa a posição em solo marciano do robô, apontando para a direção para qual o robô aponta.
+          </p>
+          <p>
+            O espaço marciano de exploração é representado pelo grid de dimensão 5x5.
+          </p>
+        </p>
+      </StyledContainer>
+      <StyledElements>
+        <DivSubmitter
+          inputContent={content}
+          setInputContent={setContent}
+          submitter={submitt}
+        />
+        <BoardPage handleReset={reset} boardData={initialBoard} />
+      </StyledElements>
+    </div>
   );
 }
+
+const StyledContainer = styled(Container)`
+  display: flex;
+  margin-top:40px;
+  margin-left: 200px;
+  margin-right: 200px;
+  text-align: left;
+`;
 
 export default MainPage;

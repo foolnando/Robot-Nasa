@@ -13,7 +13,6 @@ export class RobotsService {
   ) {}
 
   async newComand(command: string): Promise<CreateCommandRes | InvalidCommand> {
-    console.log(command);
     const createdAt = new Date();
     const regex = new RegExp(/^[MRL]+$/);
     let isValid = regex.test(command);
@@ -41,10 +40,13 @@ export class RobotsService {
     const result = await this.robotRepository.save(robs);
 
     if (!isValid) {
-      return new InvalidCommand('syntax error');
+      return new InvalidCommand('Erro sintático: comando inválido');
     }
 
-    if (!isValidMove) return new InvalidCommand('semantic error');
+    if (!isValidMove)
+      return new InvalidCommand(
+        'Erro semântico: comando excede os limites da área',
+      );
 
     return {
       createdAt: result.createdAt,
@@ -87,7 +89,6 @@ export class RobotsService {
         } else return [-1, -1];
       },
       E: function (posx: number, posy: number): number[] {
-        console.log(posx, posx + 1);
         if (posx + 1 <= 4) {
           posx++;
           return [posx, posy];
@@ -133,8 +134,6 @@ export class RobotsService {
     resetedRobot.isValid = isValid;
 
     const result = await this.robotRepository.save(resetedRobot);
-
-    console.log(result);
 
     return {
       createdAt: result.createdAt,

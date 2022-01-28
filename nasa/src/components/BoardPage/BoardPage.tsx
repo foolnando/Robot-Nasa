@@ -23,10 +23,12 @@ function BoardPage({ handleReset, boardData }: Props) {
 }
 
 const StyledDiv = styled.div`
-  flex-grow: 2;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 12px 40px;
+  margin-top: 20px;
+  margin-left: 200px;
+  margin-right: 200px;
 `;
 export default BoardPage;

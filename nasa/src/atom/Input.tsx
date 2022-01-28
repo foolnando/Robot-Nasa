@@ -18,7 +18,6 @@ const StyledInput = styled.input`
   padding: 4px;
   border: black;
   background-color: whitesmoke;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
 `;
 

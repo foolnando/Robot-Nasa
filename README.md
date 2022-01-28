@@ -1,5 +1,8 @@
 # UME FULLSTACK SOFTWARE ENGINEER CHALLENGE - Robot Nasa
 
+
+![robotnasa](https://user-images.githubusercontent.com/47675174/151618296-c6cc0238-8ab6-49dd-be57-1b6d87fadb77.png)
+
 ## Descrição do problema 
 
 Escreva um programa que permita aos engenheiros da NASA enviar comandos para o Robô e saber onde ele se encontra. Os engenheiros irão rodar testes no seu software para garantir que ele se comporta da forma esperada, antes de enviar o Robô para marte.
@@ -100,4 +103,6 @@ Acerca da escolha de tecnologias, foram todas priorizando as citadas na document
 Para os componentes do frontend, inicialmente foi pensado em adotar o padrão de atom design, porém por se tratar de uma tela muito simples e com poucos componetes
 foi decido dividir cada elemento da tela como um componente. Onde cada componentes se junta pra formar uma parte da página que se juntam pra formar a página 
 propriamente dita. Uma leve adaptação do padrão.
+
+Para escolha do estilo nostáligo 8-bit, foi para criar um visual mais lúdica, como se fosse um programa de testes da NASA nos anos 80.
 

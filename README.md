@@ -30,7 +30,7 @@ $ npm install
 $ docker-compose up -d
 
 # Execute as migrations:
-$ npm run db:migrations
+$ npm run db:migration
 
 # Rodar a aplicação:
 $ npm start

@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { Table } from "antd";
 import React from "react";
 
@@ -48,9 +49,9 @@ export default function GridBoardTable({ boardData }: Props) {
   let board = boardData;
 
   return (
-    <Table
+    <StyledTable
       rowClassName={() => "grid-board"}
-      bordered
+      bordered={true}
       pagination={false}
       columns={column}
       dataSource={board}
@@ -58,3 +59,9 @@ export default function GridBoardTable({ boardData }: Props) {
     />
   );
 }
+
+const StyledTable = styled(Table)`
+  & .ant-table-cell {
+    border: solid 3px black !important;
+  }
+`;

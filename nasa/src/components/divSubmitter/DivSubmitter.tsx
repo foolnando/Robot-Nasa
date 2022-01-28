@@ -18,6 +18,7 @@ function DivSubmitter({ inputContent, setInputContent, submitter }: Props) {
   );
 }
 
+
 const StyledDiv = styled.div`
   flex-grow: 4;
   min-height: 100vh;

@@ -36,6 +36,19 @@ $ npm run db:migration
 $ npm start
 ```
 
+Caso aconteça a mensagem de erro de que o banco não foi criado (ou não existe). Os volumes do conteiner precisam ser apagados.
+Para isso, rode:
+
+```bash
+$ docker volumes ls
+
+# se nao estiver vazio, remova todos os volumes
+
+$ docker rm <volume_name>
+```
+
+Após isso volte ao passo de carregamento do banco.
+
 ### Carregando o frontend:
 
 Na raiz do repositório:

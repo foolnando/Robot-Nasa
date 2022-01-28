@@ -165,56 +165,15 @@ function MainPage() {
   }
 
   return (
-    <div>
-      <StyledContainer title="Robot Nasa">
-        <img src={nasaLogo} alt="nasaLogo" />
-        <p>
-          <p>
-            Plataforma de simulação de movimentação do robô em solo marciano.
-            Comandos permitidos:
-          </p>
-
-          <ul>
-            <li> L: Para movimentar o robô em sentido anti-horário.</li>
-            <li> R: Para movimentar o robô em sentido horário.</li>
-            <li> M: Para movimentar o robô para frente.</li>
-          </ul>
-          <p>
-            O comando pode ser submetido no espaço de entrada abaixo e enviado
-            com o botão "Submeter".
-          </p>
-          <p>
-            Para colocar o robô em sua posição inicial basta clicar no botão
-            "Resetar".
-          </p>
-          <p>
-            A seta representa a posição em solo marciano do robô, apontando para
-            a direção para qual o robô aponta.
-          </p>
-          <p>
-            O espaço marciano de exploração é representado pelo grid de dimensão
-            5x5.
-          </p>
-        </p>
-      </StyledContainer>
-      <StyledElements size={[2, 1]} wrap>
-        <DivSubmitter
-          inputContent={content}
-          setInputContent={setContent}
-          submitter={submitt}
-        />
-        <BoardPage handleReset={reset} boardData={initialBoard} />
-      </StyledElements>
-    </div>
+    <StyledElements size={[2, 1]} wrap>
+      <DivSubmitter
+        inputContent={content}
+        setInputContent={setContent}
+        submitter={submitt}
+      />
+      <BoardPage handleReset={reset} boardData={initialBoard} />
+    </StyledElements>
   );
 }
-
-const StyledContainer = styled(Container)`
-  display: flex;
-  margin-top: 40px;
-  margin-left: 200px;
-  margin-right: 200px;
-  text-align: left;
-`;
 
 export default MainPage;

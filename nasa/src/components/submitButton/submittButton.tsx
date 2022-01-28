@@ -18,7 +18,6 @@ function SubmittButton({ handleClick }: Props) {
 const ButtonCustomized = styled(Button)`
   margin-top: 20px;
   align-self: flex-end;
-  width: 30%;
 `;
 
 export default SubmittButton;
